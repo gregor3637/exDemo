@@ -41,7 +41,7 @@ const attach = (app) => {
             }
 
              //'res' e obekt koito ni dava vazmojnost da konfigurirame response-a
-             //dolniq red pravi: view-to 'details' iskame da se renderira s modela 'thisIsUsedIn_Details_Dot_Pug'
+             //dolniq red pravi: view-to 'details' iskame da se renderira s modela 'thisIsUsedIn_Details_Dot_Pug' 
             return res.render('details', {
                 thisIsUsedIn_Details_Dot_Pug: item,
             });
