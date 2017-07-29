@@ -64,4 +64,4 @@ const router = new Router();
         return router;
 }
 
-module.exports = {attach, getRouter};
+module.exports = attach
