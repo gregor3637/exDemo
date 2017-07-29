@@ -1,23 +1,26 @@
-h1
-    | All!!!!~
-ul
-    each value, index in [1,2,3,4,5]
+extends shared/_master
+
+block body
+    h1
+        | All!!!!~
+    ul
+        each value, index in [1,2,3,4,5]
+            li
+                a(href="#item===-" + value)
+                    | Go to Item ===-
+                    = value
+                    | at index 
+                    = index
         li
-            a(href="#item===-" + value)
-                | Go to Item ===-
-                = value
-                | at index 
-                = index
-    li
-        a(href="#item1")
-            | Go to Item 1
-    li
-        a(href="#item2")
-            | Go to Item 2
-    li
-        a(href="#item3")
-            | Go to Item 3
-    each item in thisIsUsedIn_All_Dot_Pug
+            a(href="#item1")
+                | Go to Item 1
         li
-            a(href="/" + item.id)
-                | find item #{item.name} ah!!
+            a(href="#item2")
+                | Go to Item 2
+        li
+            a(href="#item3")
+                | Go to Item 3
+        each item in thisIsUsedIn_All_Dot_Pug
+            li
+                a(href="/" + item.id)
+                    | find item #{item.name} ah!!

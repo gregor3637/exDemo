@@ -1,14 +1,32 @@
+/*globals __dirname */
+const path = require('path');
+
 const express = require('express');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
 
 const app = express();
 //kakvi request-i se pravqt kam server-a
-const morgan = require('morgan');
 app.set('view engine', 'pug');
 
-const bodyParser = require('body-parser');
-app.use(morgan('combined'));
+// app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true})); 
+
+app.use('/libs', 
+    express.static(
+        path.join(__dirname, './node_modules'))
+);
+
+
+app.use('/static', 
+    express.static(
+        path.join(__dirname, './static'))
+);
+
+app.get('/404', (req,res) => {
+    res.send('<h1> ERROR </h1>');
+});
 
 require('./routes/server.routes.js')(app);
 require('./routes/api.routes.js').attach(app);
@@ -23,7 +41,6 @@ require('./routes/api.routes.js').attach(app);
 //require('./routes/api.routes.js').attach(app);
 //tova znachi che takava stranica nqma
 // sledovatelno otivash kam 404
-
 app.get('*', (req,res) => {
     res.redirect('/404');
 });
