@@ -32,7 +32,8 @@ const attach = (app) => {
                 interests: [' math', 'js'],
             })
         })
-        .get('/:id', (req, res) => {
+        .get('/:id', (req, res, next) => {
+            console.log("-------------------" + req.user.username);
             const id = parseInt(req.params.id, 10);
             const item = items.find((i) => i.id === id);
 
@@ -42,9 +43,11 @@ const attach = (app) => {
 
              //'res' e obekt koito ni dava vazmojnost da konfigurirame response-a
              //dolniq red pravi: view-to 'details' iskame da se renderira s modela 'thisIsUsedIn_Details_Dot_Pug' 
-            return res.render('details', {
+            res.render('details', {
                 thisIsUsedIn_Details_Dot_Pug: item,
             });
+
+            return next();
         });
 
     app.use('/', router);
