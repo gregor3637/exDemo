@@ -33,13 +33,13 @@ const configApp = (app) => {
 
     app.use('/libs',
         express.static(
-            path.join(__dirname, '../node_modules'))
+            path.join(__dirname, '../../node_modules'))
     );
 
 
     app.use('/static',
         express.static(
-            path.join(__dirname, '../static'))
+            path.join(__dirname, '../../static'))
     );
 };
 

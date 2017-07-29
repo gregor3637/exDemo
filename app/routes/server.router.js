@@ -21,7 +21,7 @@ const attach = (app) => {
                 .send('<h1>home </h1>');
         })
         .get('/all', (req, res) => {
-            res.render('all', {
+            res.render('items/all', {
                 thisIsUsedIn_All_Dot_Pug: items,
             });
         })
@@ -43,7 +43,7 @@ const attach = (app) => {
 
              //'res' e obekt koito ni dava vazmojnost da konfigurirame response-a
              //dolniq red pravi: view-to 'details' iskame da se renderira s modela 'thisIsUsedIn_Details_Dot_Pug' 
-            return res.render('details', {
+            return res.render('items/details', {
                 thisIsUsedIn_Details_Dot_Pug: item,
             });
 
