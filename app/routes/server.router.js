@@ -16,21 +16,12 @@ const attach = (app) => {
 
     router
         .get('/', (req, res) => {
-            res
-                .status(404)
-                .send('<h1>home </h1>');
-        })
-        .get('/all', (req, res) => {
             res.render('items/all', {
                 thisIsUsedIn_All_Dot_Pug: items,
             });
         })
-        .get('/json', (req, res) => {
-            res.send({
-                id: 1,
-                name: 'gosho',
-                interests: [' math', 'js'],
-            })
+        .get('/form', (req, res) => {
+            return res.render('items/form');
         })
         .get('/:id', (req, res, next) => {
             console.log("-------------------" + req.user.username);
@@ -46,10 +37,16 @@ const attach = (app) => {
             return res.render('items/details', {
                 thisIsUsedIn_Details_Dot_Pug: item,
             });
-
+        })
+        .post('/', (req, res) => {
+            const item = req.body;
+            console.log('@@@@@@@@@@ server.routes.js | post js> ' + JSON.stringify(item));
+            item.id = items.length + 1;
+            items.push(item);
+            return res.redirect('/items');
         });
 
-    app.use('/', router);
+    app.use('/items', router);
 }
 
 module.exports = attach;

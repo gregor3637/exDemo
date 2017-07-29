@@ -8,6 +8,10 @@ app.get('/404', (req,res) => {
     res.send('<h1> ERROR </h1>');
 });
 
+app.get('/', (req, res) => {
+    return res.render('home_In_Views');
+});
+
 require('./routes')(app);
 
 //minal si prez vsichki drugi stranici

@@ -1,0 +1,6 @@
+v views/items/form.pug
+kogato formata e s method="POST"
+to nie poluchavame tezi danni v request.body (tova se vijda v app/routes/server.router.js (40 red) -> 'post' zaqvkata)
+
+ako formata beshe s method="GET" to tezi parametri koito slagame tam shte otidat v url-a kato search parametri
+tova se izpolzva pri search/tarsene funkcionalost
