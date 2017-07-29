@@ -1,12 +1,14 @@
 const express = require('express');
 
 const app = express();
+//kakvi request-i se pravqt kam server-a
+const morgan = require('morgan');
 app.set('view engine', 'pug');
 
 const bodyParser = require('body-parser');
-
+app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true})); 
 
 require('./routes/server.routes.js')(app);
 require('./routes/api.routes.js').attach(app);
